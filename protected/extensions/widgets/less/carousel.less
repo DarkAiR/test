@@ -1,0 +1,42 @@
+@import (reference) '../../../views/less/custom';
+
+.carousel-widget {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    
+    width: @minSiteW;
+    margin-left: -@bigPadding;
+
+    .arrow {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+
+        width: 88px;
+        height: 88px;
+        display: inline-block;
+
+        &.left {
+            left: @middlePadding;
+            background: url(../../img/carousel/carousel-l.png) left center no-repeat;
+        }
+        &.right {
+            right: @middlePadding;
+            background: url(../../img/carousel/carousel-r.png) right center no-repeat;
+        }
+    }
+
+    .images-cont {
+        position: relative;
+        z-index: 1;
+
+        .image {
+            float: left;
+            img {
+
+            }
+        }        
+    }
+}

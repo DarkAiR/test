@@ -1,0 +1,7 @@
+{% macro showSingleNews(item) %}
+    <div class='news-block'>
+        <div class='date'>{{ static('DateHelper', 'formatNewsDate', [item.createTime]) }}</div>
+        <div class='title'><a href='{{ item.getNewsLink() }}'>{{ item.title|raw }}</a></div>
+        <div class='text'>{{ item.shortDesc|raw }}</div>
+    </div>
+{% endmacro %}

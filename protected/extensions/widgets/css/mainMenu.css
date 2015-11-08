@@ -1,0 +1,18 @@
+.main-menu-widget {
+  font-family: 'FTYVarogeSaroNoestNCV', Helvetica, Arial, sans-serif;
+  line-height: 66px;
+  height: 66px;
+  width: 100%;
+  text-align: center;
+}
+.main-menu-widget ul {
+  margin-top: -1px;
+}
+.main-menu-widget li {
+  padding-left: 44px;
+  margin-top: 1px;
+  background: url(../../img/sep-r.gif) 17.5px 25px no-repeat;
+}
+.main-menu-widget li:nth-child(1) {
+  background: transparent;
+}

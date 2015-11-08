@@ -1,0 +1,88 @@
+{% extends 'modules/news/views/base.twig' %}
+{% import 'modules/news/views/base.twig' as newsMacros %}
+
+{% block css %}
+    {{ parent() }}
+    {{ import('css','index.css', 'application.modules.news.css') }}
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    
+    <script type="text/javascript">
+        $(document).ready( function() {
+            var currentPage = {{ currPage + 1 }};
+            var ajaxSend = false;
+
+            $('.moreBtn').click(function() {
+                if (ajaxSend == true)
+                    return false;
+                ajaxSend = true;
+
+                $('.moreBtn .text').hide();
+                $('.moreBtn .loader').show();
+
+                $.ajax({
+                    url: "{{ static('CHtml', 'normalizeUrl', ['/news']) }}",
+                    type: 'GET',
+                    dataType: 'html',
+                    data: {
+                        'year':'{{year}}',
+                        'page': currentPage
+                    },
+
+                    success: function(data) {
+                        currentPage++;
+                        $(data).insertBefore('#js-news-paste').hide().show('fast');
+                        if ( currentPage * {{const('NewsController','NEWS_PER_PAGE')}} >= {{totalCount}} ) {
+                            $('#js-more-btn').hide();
+                        }
+                        ajaxSend = false;
+                        $('.moreBtn .text').show();
+                        $('.moreBtn .loader').hide();
+                    },
+                    error: function(data) {
+                        console.error(data);
+                        ajaxSend = false;
+                        $('.moreBtn .text').show();
+                        $('.moreBtn .loader').hide();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block newsBack %}
+{% endblock %}
+
+{% block newsLeftCol %}
+    {{ parent() }}
+{% endblock %}
+
+{% block newsContent %}
+    {% set imageW = const('News', 'IMAGE_SMALL_W') %}
+
+    <table border=0 cellpadding="0" cellspacing="0">
+        {% for item in news %}
+            {{ newsMacros.showSingleNews(item, imageW) }}
+        {% endfor %}
+
+        <tr id='js-news-paste'><td></td><td></td></tr>
+
+        {% if currCount + currPage * const('NewsController','NEWS_PER_PAGE') < totalCount %}
+        <tr id='js-more-btn'>
+            <td></td>
+            <td>
+                <div class='moreBtn'>
+                    <div class='text'>Загрузить еще новости</div>
+                    <div class='loader'></div>
+                </div>
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+
+    <div class='bottomGap'></div>
+
+{% endblock %}

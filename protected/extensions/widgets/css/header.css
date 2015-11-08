@@ -1,0 +1,39 @@
+.header-widget .line1 {
+  height: 44px;
+  width: 100%;
+  position: relative;
+}
+.header-widget .line1 .language-block {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -200px;
+  width: 400px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+}
+.header-widget .line1 .basket-block {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 44px;
+  line-height: 44px;
+  text-align: right;
+}
+.header-widget .line2 {
+  height: 160px;
+  width: 100%;
+  position: relative;
+}
+.header-widget .line2 a.logo {
+  display: block;
+  width: 229px;
+  height: 160px;
+  position: absolute;
+  left: 50%;
+  margin-left: -114.5px;
+  text-align: center;
+  background: url(../../img/logo.png) center center no-repeat;
+}

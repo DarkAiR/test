@@ -1,0 +1,21 @@
+{% block importBlock %}
+    {{ import('css','footerMenu.css','ext.widgets.css') }}
+{% endblock %}
+
+<div class='footer-menu-widget  vmenu'>
+    <div class='title'>
+        {{ this.getMenuTitle()|raw }}:
+    </div>
+    <ul>
+        {% for item in items %}
+            {% set active = item.select %}
+            <li>
+                <a class='{% if active %}active{% endif %}' href='{{ item.link }}'>
+                    {% if active %}
+                    {% endif %}
+                    {{ item.name|raw }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

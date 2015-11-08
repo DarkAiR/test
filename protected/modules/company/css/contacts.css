@@ -1,0 +1,14 @@
+.contacts-page {
+  min-height: 1px;
+}
+.contacts-page .block-info table {
+  height: 352px;
+  width: 100%;
+}
+.contacts-page .block-info table .img {
+  width: 410px;
+  background: url(../../img/cars/beton-car.png) right bottom no-repeat;
+}
+.contacts-page .block-map {
+  border-top: 1px solid #0f080f;
+}

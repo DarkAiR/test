@@ -1,0 +1,33 @@
+.news-lenta-widget {
+  width: 100%;
+  padding-top: 44px;
+}
+.news-lenta-widget .header {
+  display: none;
+}
+.news-lenta-widget .header .title {
+  font-size: 22px;
+  line-height: 27px;
+  padding-left: 22px;
+}
+.news-lenta-widget .header .title a {
+  text-decoration: none;
+}
+.news-lenta-widget .item td {
+  vertical-align: top;
+  padding-bottom: 32px;
+  min-height: 125px;
+  height: 125px;
+}
+.news-lenta-widget .item .textBlock .title a {
+  text-decoration: none;
+}
+.news-lenta-widget .item .textBlock .text {
+  padding-top: 11px;
+}
+.news-lenta-widget .item .textBlock .date,
+.news-lenta-widget .item .textBlock .title,
+.news-lenta-widget .item .textBlock .text {
+  padding-right: 22px;
+  padding-left: 22px;
+}

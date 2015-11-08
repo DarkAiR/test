@@ -1,0 +1,11 @@
+{% block importBlock %}
+    {{ import('css','language.css','ext.widgets.css') }}
+{% endblock %}
+
+<div class='language-widget  hmenu'>
+    <ul>
+    {% for lang,name in languages %}
+        <li><a href="{{ static('CHtml', 'normalizeUrl', [{'0':'/mainPage/mainPage/index', 'language':lang}]) }}">{{ lang }}</a></li>
+    {% endfor %}
+    </ul>
+</div>

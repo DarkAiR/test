@@ -1,0 +1,17 @@
+{% block importBlock %}
+    {{ import('css','header.css','ext.widgets.css') }}
+{% endblock %}
+
+<div class='header-widget'>
+    <div class='line1'>
+        <div class='language-block'>
+            {{ widget('ext.widgets.LanguageWidget') }}
+        </div>
+        <div class='basket-block'>
+            {{ widget('ext.widgets.BasketWidget') }}
+        </div>
+    </div>
+    <div class='line2'>
+        <a href='/' class='logo'></a>
+    </div>
+</div>

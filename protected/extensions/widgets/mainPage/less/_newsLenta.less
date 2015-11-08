@@ -1,0 +1,57 @@
+@import (reference) '../../../../views/less/custom';
+
+.news-lenta-widget {
+    width: 100%;
+    padding-top: @bigPadding * 2;
+
+    .col2-3 {
+        //.col(@mainCol2 + @mainCol3);
+    }
+
+    .header {
+
+        display: none;
+
+        .title {
+            .font-size(22);
+            padding-left: @bigPadding;  
+
+            a {
+                .link();
+            }
+        }
+    }
+
+    .item {
+        @dateHeight: 38px;
+        @bottomPadding: 32px;
+        @itemHeight: 125px;
+
+        td {
+            vertical-align: top;
+            padding-bottom: @bottomPadding;
+            min-height: @itemHeight;
+            height: @itemHeight;
+        }
+        .image {
+        }
+        .textBlock {
+            .date {
+            }
+            .title {
+                & * {
+                }
+                a {
+                    .link();
+                }
+            }
+            .text {
+                padding-top: 11px;
+            }
+            .date, .title, .text {
+                padding-right: @bigPadding;
+                padding-left: @bigPadding;
+            }
+        }
+    }
+}

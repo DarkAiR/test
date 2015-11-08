@@ -1,0 +1,45 @@
+{{ import('css','newsLenta.css','ext.widgets.mainPage.css') }}
+
+{% set imageW = const('News', 'IMAGE_SMALL_MAIN_W') %}
+
+<div class='news-lenta-widget'>
+
+    <table border=0 cellpadding="0" cellspacing="0">
+    <tr>
+        <td class='col2-3'>
+        
+            <table border=0 cellpadding="0" cellspacing="0">
+
+                <tr class='header'>
+                    <td></td>
+                    <td>
+                        <div class='title'>
+                            <a href='{{ static('CHtml', 'normalizeUrl', ['/news']) }}'>Новости</a>
+                        </div>
+                    </td>
+                </tr>
+
+                {% for item in news %}
+                    <tr class='item'>
+                        <td>
+                            <div class='image'>
+                                <img src='{{ item.getImageUrl() }}' style='width:{{imageW}}px'>
+                            </div>
+                        </td>
+                        <td>
+                            <div class='textBlock'>
+                                <div class='date'>{{ static('DateHelper', 'formatNewsDate', [item.createTime]) }}</div>
+                                <div class='title'><a href='{{ item.getNewsLink() }}'>{{ item.title|raw }}</a></div>
+                                <div class='text'>{{ item.shortDesc|raw }}</div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+
+        </td>
+    </tr>
+    </table>
+
+</div>

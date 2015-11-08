@@ -1,0 +1,119 @@
+/*
+ http://www.fontsquirrel.com/tools/webfont-generator
+
+ Character type: lowercase, uppercase, numbers, punctuation, currency, math symbols;
+ Language: Cyrillic, English;
+ Unicode Tables: Basic latin, Currency symbols, punctuation;
+*/
+/* Главная разметка */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'fira_sansregular', Helvetica, Arial, sans-serif;
+}
+body,
+table {
+  font-size: 18px;
+  line-height: 24px;
+  color: #0f080f;
+  background-color: #ffffff;
+}
+*:focus {
+  outline: none;
+}
+body > .page {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  min-width: 980px;
+  overflow: hidden;
+}
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: #0f080f;
+}
+a:hover {
+  text-decoration: none;
+  color: #ccc5b5;
+}
+a.active {
+  text-decoration: none;
+  color: #ccc5b5 !important;
+}
+p {
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 22px;
+}
+p:nth-last-child(1) {
+  padding-bottom: 0;
+}
+h1,
+h2 {
+  font-family: 'fira_sansregular', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 22px;
+  text-transform: uppercase;
+}
+table {
+  background-color: transparent;
+  border: none;
+}
+table td {
+  vertical-align: top;
+  text-align: left;
+}
+/* Общий контейнер */
+.common-container {
+  position: relative;
+  width: 980px;
+  padding: 0px 44px 0 44px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.common-container:before,
+.common-container:after {
+  display: table;
+  content: " ";
+}
+.common-container:after {
+  clear: both;
+}
+.col2 {
+  width: 356.8px;
+  min-width: 356.8px;
+  float: left;
+  height: inherit;
+  min-height: 1px;
+}
+.col3 {
+  width: 535.2px;
+  min-width: 535.2px;
+  float: left;
+  height: inherit;
+  min-height: 1px;
+}
+.separator {
+  background: #ccc5b5;
+  height: 1px;
+  width: 100%;
+  min-height: 1px;
+  max-height: 1px;
+}
+.head {
+  position: relative;
+  width: 980px;
+  padding: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+.footer {
+  position: relative;
+}

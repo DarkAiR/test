@@ -1,0 +1,70 @@
+{% extends 'modules/news/views/base.twig' %}
+
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+    function backAway()
+    {
+        // if it was the first page
+        if (document.referrer == '')
+            window.location = "{{backUrl}}";
+        else
+            window.location = document.referrer;
+    }
+    </script>
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    {{ import('css','show.css', 'application.modules.news.css') }}
+{% endblock %}
+
+{% block newsBack %}
+    <div class='backBtnCont'>
+        <a class='backBtn' href="#" onclick="backAway(); return false;"></a>
+    </div>
+{% endblock %}
+
+{% block newsLeftCol %}
+    {{ parent() }}
+{% endblock %}
+
+{% block newsContent %}
+    <div class='content'>
+        <div class='date'>{{ static('DateHelper', 'formatNewsDate', [news.createTime]) }}</div>
+        <div class='title'>{{ news.title|raw }}</div>
+        <div class='text'>{{ news.desc|raw }}</div>
+
+        {% if news.docs|length > 0 %}
+            <div class='files'>
+                {% for doc in news.docs %}
+                    <div class='iconRow'>
+                        <div class='icon {{ call('pathinfo', [doc.name, constant('PATHINFO_EXTENSION')]) }}'></div>
+                        <div class='name'><a href='{{news.getDocUrl(doc.name)}}' target='_blank'>{{ call('pathinfo', [doc.name, constant('PATHINFO_FILENAME')]) }},</a></div>
+                        <div class='size'>{{ static('Yii', 'app').format.format(doc.size,'size') }}</div>
+                    </div>
+                    <div class='clearfix'></div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+    <div class='navigation'>
+        <div class='prev'>
+            <span class='arrow'></span>
+            {% if prevLink %}
+                <a href='{{ prevLink }}'>Предыдущая новость</a>
+            {% else %}
+                <span class='inactive'>Предыдущая новость</span>
+            {% endif %}
+        </div>
+        <div class='next'>
+            {% if nextLink %}
+                <a href='{{ nextLink }}'>Следующая новость</a>
+            {% else %}
+                <span class='inactive'>Следующая новость</span>
+            {% endif %}
+            <span class='arrow'></span>
+        </div>
+    </div>
+{% endblock %}

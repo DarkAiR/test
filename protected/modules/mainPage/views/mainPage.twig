@@ -1,0 +1,28 @@
+{% extends 'views/layouts/main.twig' %}
+
+{% block css %}
+    {{ parent() }}
+    {{ import('css','mainPage.css', 'application.modules.mainPage.css') }}
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class='main-page'>
+    {{ widget('ext.widgets.CarouselWidget') }}
+</div>
+{% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

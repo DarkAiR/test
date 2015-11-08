@@ -1,0 +1,44 @@
+.banners-widget {
+  /*    padding-bottom: @bigPadding + 6px;
+
+    .col1 {
+        .col(@mainCol1);
+    }
+    .col2-3 {
+        .col(@mainCol2 + @mainCol3);
+    }
+
+    .cont {
+        position: relative;
+    }
+    .absolute {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .banner {
+        padding-left: @bigPadding;
+        padding-bottom: @middlePadding * 2;
+        a {
+            .link(none);
+        }
+        img {
+
+        } 
+    }
+
+    .separators-group {
+        padding-left: @bigPadding;
+        padding-right: @bigPadding;
+        
+        .separator {
+            .separate-line();
+            width: 100%;
+            background: @colorLinkHover;
+        }
+        .separator-gap {
+            height: 3px;
+        }
+    }*/
+}

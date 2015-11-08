@@ -1,0 +1,54 @@
+@import (reference) '../../../views/less/custom';
+
+.header-widget {
+    .line1 {
+        @h: @bigPadding;
+
+        height: @h;
+        width: 100%;
+        position: relative;
+
+        .language-block {
+            @w: 400px;
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -@w/2;
+            width: @w;
+            height: @h;
+            line-height: @h;
+            text-align: center;
+        }
+        .basket-block {
+            @w: 200px;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: @w;
+            height: @h;
+            line-height: @h;
+            text-align: right;
+        }
+    }
+    .line2 {
+        @h: 160px;
+
+        height: @h;
+        width: 100%;
+        position: relative;
+    
+        a.logo {
+            @w: 229px;
+            display: block;
+            width: @w;
+            height: @h;
+            position: absolute;
+            left: 50%;
+            margin-left: -@w/2;
+            text-align: center;
+            background: url(../../img/logo.png) center center no-repeat;
+        }
+    }
+}

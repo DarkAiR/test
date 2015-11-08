@@ -1,0 +1,9 @@
+.footer-menu-widget .title {
+  font-family: 'FTYVarogeSaroNoestNCV', Helvetica, Arial, sans-serif;
+  height: 33px;
+}
+.footer-menu-widget li {
+  padding-left: 18px;
+  margin-bottom: 4px;
+  background: url(../../img/sep-r.gif) left 7px no-repeat;
+}

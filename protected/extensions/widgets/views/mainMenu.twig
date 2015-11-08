@@ -1,0 +1,24 @@
+{% block importBlock %}
+    {{ import('css','menu.css') }}
+    {{ import('css','mainMenu.css','ext.widgets.css') }}
+{% endblock %}
+
+<div class='main-menu-widget  hmenu'>
+    <ul>
+        {% for item in items %}
+            {% set active = item.select %}
+            <li>
+                {% if item.enabled %}
+                    <a class='{% if active %}active{% endif %}' href='{{ item.link }}'>
+                        {{ item.name|raw }}
+                    </a>
+                {% else %}
+                    <div class='disable'>
+                        {{ item.name|raw }}
+                    </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <div class='separator'></div>
+</div>

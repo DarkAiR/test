@@ -1,0 +1,43 @@
+{% extends 'views/layouts/main.twig' %}
+
+{% block css %}
+    {{ parent() }}
+    {{ import('css','contacts.css', 'application.modules.company.css') }}
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+<div class='contacts-page'>
+    <div class='block-info'>
+        <table><tr>
+            <td class='text'>
+                <p>
+                    Адрес: 625000, Тюменская область, Тюменский район, промышленная зона села Горьковка, участок 1102
+                </p>
+                <p>
+                    Телефон: %PHONE%<br/>
+                    Факс: %FAX%
+                </p>
+                <p>
+                    Электронная почта: <a href='mailto:%EMAIL%'>%EMAIL%</a>
+                </p>
+                <p>
+                    Режим работы с %WORK_TIME_START% до %WORK_TIME_END%
+                </p>
+            </td>
+            <td class='img'></td>
+        </tr></table>
+    </div>
+
+    <div class='block-map'>
+        <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=jtfqBJxx40QNTQqSLITPhvxnXX36lNjV&width=100%&height=450"></script>
+
+    </div>
+
+    <div class='clearfix'></div>
+</div>
+{% endblock %}

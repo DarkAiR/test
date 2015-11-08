@@ -1,0 +1,6 @@
+{% import 'modules/news/views/base.twig' as newsMacros %}
+
+{% set imageW = const('News', 'IMAGE_SMALL_W') %}
+{% for item in news %}
+    {{ newsMacros.showSingleNews(item, imageW) }}
+{% endfor %}

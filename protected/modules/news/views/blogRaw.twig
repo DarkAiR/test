@@ -1,0 +1,5 @@
+{% import 'modules/news/views/blogMacros.twig' as blogMacros %}
+
+{% for item in news %}
+    {{ blogMacros.showSingleNews(item) }}
+{% endfor %}

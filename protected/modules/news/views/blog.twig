@@ -1,0 +1,110 @@
+{% extends 'views/layouts/main.twig' %}
+{% import 'modules/news/views/blogMacros.twig' as blogMacros %}
+
+{% block css %}
+    {{ parent() }}
+    {{ import('css','blog.css', 'application.modules.news.css') }}
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    
+    <script type="text/javascript">
+        $(function() {
+            var currentPage = {{ currPage + 1 }};
+            var ajaxSend = false;
+
+            $(window).scroll(function() {
+                var elements = inWindowAndAbove('#js-load-more');
+                if (elements.length > 0) {
+                    var el = $(elements[0]);
+
+                    // Already loading
+                    if (el.data('loading') == 1)
+                        return;
+
+                    // No more loading
+                    if (el.data('no-more-load') == 1)
+                        return;
+
+                    // Start loading
+                    el.data('loading', 1);
+                    el.find('.loader').show();          // show loader
+
+                    $.ajax({
+                        url: "{{ static('CHtml', 'normalizeUrl', [{0:'/news/news/blog'}]) }}",
+                        type: 'GET',
+                        dataType: 'html',
+                        data: {
+                            'page': currentPage
+                        },
+                        success: function(data) {
+                            currentPage++;
+                            $('#js-blog-list').append(data);
+                            if ( currentPage * {{const('NewsController','NEWS_PER_PAGE')}} >= {{totalCount}} ) {
+                                $('#js-load-more')
+                                    .css("visibility", "hidden")
+                                    .data('no-more-load', 1);
+                            }
+                            el.removeData('loading');
+                            el.find('.loader').hide();
+                        },
+                        error: function(data) {
+                            console.error(data);
+                            el.removeData('loading');
+                            el.find('.loader').hide();
+                        }
+                    });
+                }
+            });
+
+            /**
+             * Функция, которая по заданному селектору найдет соответствующие ему элементы, которые при этом попадают в видимую область окна
+             */
+            function inWindowAndAbove(s)
+            {
+                var scrollTop = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                var currentEls = $(s);
+                var result = [];
+                currentEls.each(function() {
+                    var el = $(this);
+                    var offset = el.offset();
+//                    if (scrollTop <= offset.top  &&  el.height() + offset.top < scrollTop + windowHeight)
+                    if (el.height() + offset.top < scrollTop + windowHeight)
+                        result.push(this);
+                });
+                return $(result);
+            }
+
+            return;
+
+
+
+
+            $('.moreBtn').click(function() {
+                if (ajaxSend == true)
+                    return false;
+                ajaxSend = true;
+
+                $('.moreBtn .text').hide();
+                $('.moreBtn .loader').show();
+
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class='blog-page'>
+    <div id='js-blog-list'>
+        {% for item in news %}
+            {{ blogMacros.showSingleNews(item) }}
+        {% endfor %}
+    </div>
+
+    <div id='js-load-more' class='load-more'>
+        <div class='loader'></div>
+    </div>
+</div>
+{% endblock %}

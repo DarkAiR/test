@@ -1,0 +1,239 @@
+// Колонки
+
+@minSiteW:              980px;      // Минимальная ширина сайта
+@sitePaddingV:          0px;        // Главный отступ
+@sitePaddingH:          44px;        // Главный отступ
+
+// Основные отступы
+@smallPadding:          11px;
+@middlePadding:         22px;
+@bigPadding:            44px;
+
+// Цвета
+@devRedBg:              rgba(255,0,0,0.2);
+@devGreenBg:            rgba(0,255,0,0.2);
+@devBlueBg:             rgba(0,0,255,0.2);
+@devMagentaBg:          rgba(255,0,255,0.2);
+@devGreyBg:             rgba(0,0,0,0.05);
+
+@mainBg:                #fff;
+
+@colorText:             #0f080f;
+@colorGrey:             #ccc5b5;
+@colorLight:            #eeeae1;
+
+// Цвета ссылок
+@colorLink:             @colorText;
+@colorLinkHover:        @colorGrey;
+@colorLinkHoverLight:   #8c8585;
+@colorLinkActive:       @colorGrey;
+
+// -------------------------------
+
+@import '../less_include/fonts.less';           // Fonts
+@import '../less_include/links.less';           // Links
+
+// ------------------------------------------------------
+
+/* Главная разметка */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    .font(FiraSans);
+}
+body, table {
+    .font-size(18);
+    color: @colorText;
+    background-color: @mainBg;
+}
+// iPad
+@media screen
+and (min-width : 768px) 
+and (max-width : 980px) {
+}
+// Desktop
+@media screen
+and (max-width: 768px) {
+}
+// iPhone, другие мобилки
+@media screen
+and (max-width : 667px) {
+    body, table {
+        //.font-size(19);
+    }
+}
+
+
+
+*:focus {
+    outline: none;
+}
+body > .page {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+
+    // Выставляем минимальную ширину сайта и убираем скроллеры, если ширина больше
+    min-width: @minSiteW;
+    overflow: hidden;
+}
+
+a {
+    &, &:visited, &:link {
+        text-decoration: none;
+        color: @colorLink;
+    }
+    &:hover {
+        text-decoration: none;
+        color: @colorLinkHover;
+    }
+    &.active {
+        text-decoration: none;
+        color: @colorLinkActive !important;
+    }
+}
+
+
+p {
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: @middlePadding;
+}
+p:nth-last-child(1) {
+    padding-bottom: 0;
+}
+
+h1, h2 {
+    .font(FiraSans);
+    .font-size(18, 1);
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: @middlePadding;
+    text-transform: uppercase;
+}
+
+table {
+    background-color: transparent;
+    border: none;
+    td {
+        vertical-align: top;
+        text-align: left;
+    }
+}
+
+/* Общий контейнер */
+.common-container {
+    position:       relative;
+    width:          @minSiteW;
+    padding:        @sitePaddingV @sitePaddingH 0 @sitePaddingH;
+    margin-right:   auto;
+    margin-left:    auto;
+    //overflow:       hidden;     // Отключаем скроллеры, чтобы они не создавали лишних отступов на мобильных устройствах
+    
+    &:before,
+    &:after {
+        display: table;
+        content: " ";
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// Колонка
+.col() {
+    //outline: 1px dotted #808080;
+    
+    width: auto;
+    min-width: 0;
+    float: left;
+    height: inherit;
+    min-height: 1px;
+}
+.col(@w) {
+    //outline: 1px dotted #808080;
+    
+    width: @w;
+    min-width: @w;
+    float: left;
+    height: inherit;
+    min-height: 1px;
+}
+
+@colW: (@minSiteW - @bigPadding * 2) / 5;
+.col2 {
+    .col(@colW*2);
+}
+.col3 {
+    .col(@colW*3);
+}
+
+// Градиенты
+.gradient(vertical, @colorUp, @colorDown) {
+    background: -webkit-linear-gradient(@colorUp, @colorDown);  /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(@colorUp, @colorDown);       /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(@colorUp, @colorDown);     /* For Firefox 3.6 to 15 */
+    background: linear-gradient(@colorUp, @colorDown);          /* Standard syntax */
+}
+
+// Бордюры
+.border-radius(@r) {
+    -moz-border-radius:     @r;
+    -webkit-border-radius:  @r;
+    border-radius:          @r;
+}
+.border-radius(@topleft, @topright, @bottomright, @bottomleft) {
+    -moz-border-radius-topleft:         @topleft;
+    -moz-border-radius-topright:        @topright;
+    -moz-border-radius-bottomright:     @bottomright;
+    -moz-border-radius-bottomleft:      @bottomleft;
+
+    -webkit-border-top-left-radius:     @topleft;
+    -webkit-border-top-right-radius:    @topright;
+    -webkit-border-bottom-right-radius: @bottomright;
+    -webkit-border-bottom-left-radius:  @bottomleft;
+
+    border-top-left-radius:             @topleft;
+    border-top-right-radius:            @topright;
+    border-bottom-right-radius:         @bottomright;
+    border-bottom-left-radius:          @bottomleft;
+}
+
+// Тень
+.shadow(@offsX, @offsY, @blur, @alpha:0.3) {
+    box-shadow:         @offsX @offsY @blur rgba(0,0,0,@alpha);
+   -moz-box-shadow:     @offsX @offsY @blur rgba(0,0,0,@alpha);
+   -webkit-box-shadow:  @offsX @offsY @blur rgba(0,0,0,@alpha);
+}
+.shadow-inner(@offsX, @offsY, @blur, @alpha0:.3) {
+    box-shadow:         inset @offsX @offsY @blur rgba(0,0,0,@alpha);
+   -moz-box-shadow:     inset @offsX @offsY @blur rgba(0,0,0,@alpha);
+   -webkit-box-shadow:  inset @offsX @offsY @blur rgba(0,0,0,@alpha);
+}
+
+// Разделитель
+.separator {
+    background: @colorGrey;
+    height: 1px;
+    width: 100%;
+    min-height: 1px;
+    max-height: 1px;
+}
+
+
+
+.head {
+    position:       relative;
+    width:          @minSiteW;
+    padding:        0;
+    margin-right:   auto;
+    margin-left:    auto;
+}
+
+.footer {
+    position: relative;
+}
+

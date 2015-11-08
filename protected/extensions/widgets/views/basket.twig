@@ -1,0 +1,7 @@
+{% block importBlock %}
+    {{ import('css','basket.css','ext.widgets.css') }}
+{% endblock %}
+
+<div class='basket-widget'>
+    <button>{{ t('app', 'Корзина:') }} {{count}}</button>
+</div>

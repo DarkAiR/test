@@ -1,0 +1,4 @@
+create database `redsphere` default character set 'utf8';
+grant all privileges on `redsphere`.* to 'gpor'@'%';
+
+./yiic createauthitems index --email=... --password=...

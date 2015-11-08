@@ -1,0 +1,27 @@
+@import (reference) '../../../views/less/custom';
+
+.main-menu-widget {
+    @h: @bigPadding + @middlePadding;
+
+    .font(FTY_Varoge);
+
+    line-height: @h;
+    height: @h;
+    width: 100%;
+    text-align: center;
+
+    ul {
+        margin-top: -1px;           // Центирование меню
+    }
+    li {
+        @padd: @bigPadding;
+
+        padding-left: @padd;
+        margin-top: 1px;
+
+        background: url(../../img/sep-r.gif) (@padd - 9px)/2 25px no-repeat;
+        &:nth-child(1) {
+            background: transparent;
+        }
+    }
+}
