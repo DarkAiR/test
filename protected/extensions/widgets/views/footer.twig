@@ -2,49 +2,9 @@
     {{ import('css','footer.css','ext.widgets.css') }}
 {% endblock %}
 
-<script type="text/javascript">
-$(document).ready( function() {
-    $('#js-back-to-top').click(function() {
-        var body = $("html, body");
-        body.animate({scrollTop:0}, '500', 'swing');
-        return false;
-    });
-});
-</script>
-
 <div class='footer-widget'>
-    <div class='line1'>
-        <div class='common-container'>
-            <div class='leftcol col3'>
-
-                <table class='footer-menu-block'><tr>
-                    <td class='footer-menu-1'>
-                        {{ widget('ext.widgets.FooterMenuWidget', {'menuId':constant('Menu::FOOTER_MENU_1')}) }}
-                    </td>
-                    <td class='footer-menu-2'>
-                        {{ widget('ext.widgets.FooterMenuWidget', {'menuId':constant('Menu::FOOTER_MENU_2')}) }}
-                    </td>
-                </tr></table>
-
-                <div class='subscribe-block'>
-                    {{ widget('ext.widgets.SubscribeWidget') }}
-                </div>
-
-            </div>
-            <div class='rightcol col2'>
-                {{ widget('ext.widgets.SocialButtonsWidget') }}
-            </div>
-        </div>
-    </div>
-
-    <div class='line2'>
-        <div class='common-container'>
-            <div class='copyright col3'>
-                &copy; SDELANO-NAMMI.COM
-            </div>
-            <div class='backtotop col2'>
-                <a href='#' id='js-back-to-top'>{{ t('app', 'Наверх') }} <div class='arrow'>&#9652;</div></a> 
-            </div>
-        </div>
+    <div class="c-align">Муниципальное казенное учреждение<br>
+        «Многофункциональный центр предоставления государственных и муниципальных услуг<br>
+        муниципального образования «город Екатеринбург»
     </div>
 </div>

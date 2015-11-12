@@ -27,6 +27,7 @@ $res = array(
         'articles',
         'carousel',
 //        'banners',
+        'mfc',
     ),
     'components' => array(
         'user' => array(
@@ -76,6 +77,7 @@ $res = array(
                 'import'        => 'TwigFunctions::importResource',
                 'absLink'       => 'TwigFunctions::absLink',
                 'plural'        => 'TwigFunctions::plural',
+                'dump'          => 'TwigFunctions::dump',
                 't'             => 'Yii::t',
             ),
             'filters' => array(
@@ -136,14 +138,20 @@ $res['sourceLanguage'] = 'ru';
 $res['language'] = $langArr[0];
 
 $res['components']['urlManager']['rules'] = array(
-    $langPrefix.'/'                     => 'mainPage/mainPage/index',
-    '/'                                 => 'mainPage/mainPage/index',
+    $langPrefix.'/'                     => 'site/index',
+    '/'                                 => 'site/index',
 
-    $langPrefix.'/contacts'             => 'company/company/contacts',
-    'contacts'                          => 'company/company/contacts',
+    $langPrefix.'/contacts/'            => 'company/company/contacts',
+    'contacts/'                         => 'company/company/contacts',
 
-    $langPrefix.'/news'                 => 'news/news/blog',
+    $langPrefix.'/news/'                => 'news/news/blog',
     'news/'                             => 'news/news/blog',
+
+    $langPrefix.'/mfc/'                 => 'mfc/mfc/index',
+    'mfc/'                              => 'mfc/mfc/index',
+
+    $langPrefix.'/mfc/<action:\w+>/'    => 'mfc/mfc/<action>',
+    'mfc/<action:\w+>/'                 => 'mfc/mfc/<action>',
 
     // Admin
     'admin/'                                    => 'system2',
@@ -152,6 +160,7 @@ $res['components']['urlManager']['rules'] = array(
     'admin/<module:\w+>/<controller:\w+>/<action:\w+>/' => '<module>/admin<controller>/<action>',
 );
 
+// Роуты для правильного преобразования ссылок в меню
 $res['params']['routes'] = array(
     'contacts'  => 'company/company/contacts',
     'news'      => 'news/news/blog',

@@ -1,54 +1,63 @@
 @import (reference) '../../../views/less/custom';
 
 .header-widget {
-    .line1 {
-        @h: @bigPadding;
-
-        height: @h;
-        width: 100%;
-        position: relative;
-
-        .language-block {
-            @w: 400px;
-
-            position: absolute;
-            top: 0;
-            left: 50%;
-            margin-left: -@w/2;
-            width: @w;
-            height: @h;
-            line-height: @h;
-            text-align: center;
+    .inner-header {
+        padding: 15px 0;
+        
+        a {
+            border: 0;
         }
-        .basket-block {
-            @w: 200px;
-
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: @w;
-            height: @h;
-            line-height: @h;
-            text-align: right;
+        .phones {
+            color: #dc6655;
+            font: 1.5em 'PT Sans Bold', arial, sans-serif;
+        }
+        .worktime {
+            color: #4d3b3b;
+        
+            & > h4 {
+                text-transform: uppercase;
+                font: 0.87em 'PT Sans Bold', arial, sans-serif;
+            }
+            & > div .week-days {
+                text-transform: lowercase;
+                font: 0.78em 'PT Sans Bold', arial, sans-serif;
+            }
+            & > div > time {
+                font: 1.4em 'PT Sans Bold', arial, sans-serif;
+                color: #dc6655;
+            }
         }
     }
-    .line2 {
-        @h: 160px;
 
-        height: @h;
+    .tbl {
+        display: table;
         width: 100%;
-        position: relative;
-    
-        a.logo {
-            @w: 229px;
-            display: block;
-            width: @w;
-            height: @h;
-            position: absolute;
-            left: 50%;
-            margin-left: -@w/2;
-            text-align: center;
-            background: url(../../img/logo.png) center center no-repeat;
-        }
     }
+    .tr {
+        display: table-row;
+    }
+    .td {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .r-align {text-align: right;}
+    .l-align {text-align: left;}
+    .c-align {text-align: center;}
+    .v-align {vertical-align: baseline;}
+    .v-t-align {vertical-align: top;}
+
+    .slogan {
+        display: block;
+        margin-top: 5px;
+        margin-right: 104px;
+        /*width: 150px;*/
+        font-size: 0.73em;
+        color: #dc6655;
+        text-align: right;
+        line-height: 1;
+    }
+
+    .float-l {float: left;}
+    .float-r {float: right;}
 }

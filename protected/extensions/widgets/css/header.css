@@ -1,39 +1,68 @@
-.header-widget .line1 {
-  height: 44px;
-  width: 100%;
-  position: relative;
+.header-widget .inner-header {
+  padding: 15px 0;
 }
-.header-widget .line1 .language-block {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  margin-left: -200px;
-  width: 400px;
-  height: 44px;
-  line-height: 44px;
+.header-widget .inner-header a {
+  border: 0;
+}
+.header-widget .inner-header .phones {
+  color: #dc6655;
+  font: 1.5em 'PT Sans Bold', arial, sans-serif;
+}
+.header-widget .inner-header .worktime {
+  color: #4d3b3b;
+}
+.header-widget .inner-header .worktime > h4 {
+  text-transform: uppercase;
+  font: 0.87em 'PT Sans Bold', arial, sans-serif;
+}
+.header-widget .inner-header .worktime > div .week-days {
+  text-transform: lowercase;
+  font: 0.78em 'PT Sans Bold', arial, sans-serif;
+}
+.header-widget .inner-header .worktime > div > time {
+  font: 1.4em 'PT Sans Bold', arial, sans-serif;
+  color: #dc6655;
+}
+.header-widget .tbl {
+  display: table;
+  width: 100%;
+}
+.header-widget .tr {
+  display: table-row;
+}
+.header-widget .td {
+  display: table-cell;
+  vertical-align: middle;
   text-align: center;
 }
-.header-widget .line1 .basket-block {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 200px;
-  height: 44px;
-  line-height: 44px;
+.header-widget .r-align {
   text-align: right;
 }
-.header-widget .line2 {
-  height: 160px;
-  width: 100%;
-  position: relative;
+.header-widget .l-align {
+  text-align: left;
 }
-.header-widget .line2 a.logo {
-  display: block;
-  width: 229px;
-  height: 160px;
-  position: absolute;
-  left: 50%;
-  margin-left: -114.5px;
+.header-widget .c-align {
   text-align: center;
-  background: url(../../img/logo.png) center center no-repeat;
+}
+.header-widget .v-align {
+  vertical-align: baseline;
+}
+.header-widget .v-t-align {
+  vertical-align: top;
+}
+.header-widget .slogan {
+  display: block;
+  margin-top: 5px;
+  margin-right: 104px;
+  /*width: 150px;*/
+  font-size: 0.73em;
+  color: #dc6655;
+  text-align: right;
+  line-height: 1;
+}
+.header-widget .float-l {
+  float: left;
+}
+.header-widget .float-r {
+  float: right;
 }

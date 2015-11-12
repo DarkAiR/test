@@ -1,13 +1,29 @@
 // Колонки
+//@mainCol1:              225px;
+//@mainCol2:              382px;
+//@mainCol3:              359px;
+//@mainCol:               @mainCol1 + @mainCol2 + @mainCol3;  // 966
 
-@minSiteW:              980px;      // Минимальная ширина сайта
-@sitePaddingV:          0px;        // Главный отступ
-@sitePaddingH:          44px;        // Главный отступ
+@minSiteW:              980px;
 
 // Основные отступы
-@smallPadding:          11px;
-@middlePadding:         22px;
-@bigPadding:            44px;
+//@smallPadding:          11px;
+//@middlePadding:         18px;
+@bigPadding:            22px;
+
+//@paragraphPadding:      19px;       // По размеру основного 12 или 13 шрифта 
+
+
+// Шапка, футер
+@headerH:               44px;
+@footerH:               44px;
+//@footerPaddingTop:      92px;
+//@footerSeparatorColor:  #a6adb4;
+
+// Заголовок
+//@mainTitleH:            120px;
+//@pageTitleH:            49px;
+//@pageTitleFontSize:     32;
 
 // Цвета
 @devRedBg:              rgba(255,0,0,0.2);
@@ -18,15 +34,23 @@
 
 @mainBg:                #fff;
 
-@colorText:             #0f080f;
+@colorText:             #3f3f3f;
+@colorTextLight:        #6f6f6f;
+@colorRed:              #d8172e;        // цвет надписи Red в redsphere
 @colorGrey:             #ccc5b5;
 @colorLight:            #eeeae1;
 
+//@colorTitle:            #719e3d;
+//@colorTitleGrey:        #2b2b2b;        // #767676
+//@colorTitleLightGrey:   #929da0;
+
 // Цвета ссылок
-@colorLink:             @colorText;
-@colorLinkHover:        @colorGrey;
-@colorLinkHoverLight:   #8c8585;
-@colorLinkActive:       @colorGrey;
+@colorLink:             #2f2f2f;
+@colorLinkHover:        #5f5f5f;
+@colorLinkRed:          #d8172e;
+@colorLinkHoverRed:     #ff515b;
+
+@colorSeparatorLine:    #dcdcdc;
 
 // -------------------------------
 
@@ -41,10 +65,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    .font(FiraSans);
+    .font(OpenSans);
 }
 body, table {
-    .font-size(18);
+    .font-size(16);
     color: @colorText;
     background-color: @mainBg;
 }
@@ -72,66 +96,76 @@ and (max-width : 667px) {
 }
 body > .page {
     min-height: 100%;
-    height: auto !important;
     height: 100%;
 
-    // Выставляем минимальную ширину сайта и убираем скроллеры, если ширина больше
-    min-width: @minSiteW;
-    overflow: hidden;
+    // заставляем футер прижаться к низу или сразу после контента и выставляем ширину
+    width: 100%;
+    display: table;
+
+    & > .wrap {
+        padding-bottom: @footerH;
+    }
 }
 
 a {
     &, &:visited, &:link {
         text-decoration: none;
+//        border-bottom: 1px solid #f4c0c6;
+        color: @colorLinkRed;
+    }
+    &:hover {
+        text-decoration: none;
+//        border-bottom: 1px solid #fabddb;
+        color: @colorLinkHoverRed !important;
+    }
+    &.active {
+        text-decoration: none;
+        border-bottom: none;
+        color: @colorText !important;
+    }
+}
+a.grey {
+    &, &:visited, &:link {
+        text-decoration: none;
+//        border-bottom: 1px solid @colorLink;
         color: @colorLink;
     }
     &:hover {
         text-decoration: none;
-        color: @colorLinkHover;
-    }
-    &.active {
-        text-decoration: none;
-        color: @colorLinkActive !important;
+//        border-bottom: 1px solid @colorLinkHover;
+        color: @colorLinkHover !important;
     }
 }
+
 
 
 p {
     margin: 0px;
     padding: 0px;
-    padding-bottom: @middlePadding;
-}
-p:nth-last-child(1) {
-    padding-bottom: 0;
 }
 
-h1, h2 {
-    .font(FiraSans);
-    .font-size(18, 1);
+h1 {
+    .font-size(24);
+    .font(OpenSans, semibold);
     padding: 0px;
     margin: 0px;
-    padding-bottom: @middlePadding;
-    text-transform: uppercase;
-}
 
-table {
-    background-color: transparent;
-    border: none;
-    td {
-        vertical-align: top;
-        text-align: left;
+    .red {
+        color: @colorRed;
     }
 }
 
 /* Общий контейнер */
 .common-container {
+    _background-color: @devRedBg;
+
     position:       relative;
-    width:          @minSiteW;
-    padding:        @sitePaddingV @sitePaddingH 0 @sitePaddingH;
+    width:          100%;
+    padding:        0;
     margin-right:   auto;
     margin-left:    auto;
     //overflow:       hidden;     // Отключаем скроллеры, чтобы они не создавали лишних отступов на мобильных устройствах
-    
+
     &:before,
     &:after {
         display: table;
@@ -140,6 +174,18 @@ table {
 
     &:after {
         clear: both;
+    }
+
+    .body {
+        width: 100%;
+        margin: 0 auto;
+        min-width: @minSiteW;     // Отключаем, походу не нужно сейчас
+    }
+    @media screen
+    and (max-width : 980px) {       // iPad
+        .body {
+            min-width: inherit;
+        }
     }
 }
 
@@ -161,14 +207,6 @@ table {
     float: left;
     height: inherit;
     min-height: 1px;
-}
-
-@colW: (@minSiteW - @bigPadding * 2) / 5;
-.col2 {
-    .col(@colW*2);
-}
-.col3 {
-    .col(@colW*3);
 }
 
 // Градиенты
@@ -215,25 +253,28 @@ table {
 }
 
 // Разделитель
-.separator {
-    background: @colorGrey;
+.separate-line() {
+    background: #cacaca;
     height: 1px;
-    width: 100%;
     min-height: 1px;
     max-height: 1px;
 }
-
+.separator {
+    .separate-line();
+    width: 100%;
+}
 
 
 .head {
-    position:       relative;
-    width:          @minSiteW;
-    padding:        0;
-    margin-right:   auto;
-    margin-left:    auto;
+    @logoW: 150px;
 }
 
 .footer {
     position: relative;
+    width: 100%;
+    min-width: 1260px;
+    background-color: #4d3b3b;
+    padding: 20px 0;
+    font: 0.87em/1.5em 'PT Sans', arial, sans-serif;
+    color: #f2c19d;
 }
-

@@ -3,15 +3,39 @@
 {% endblock %}
 
 <div class='header-widget'>
-    <div class='line1'>
-        <div class='language-block'>
-            {{ widget('ext.widgets.LanguageWidget') }}
-        </div>
-        <div class='basket-block'>
-            {{ widget('ext.widgets.BasketWidget') }}
-        </div>
+    <div class="inner-header">
+    <div class="tbl">
+        <div class="tr">
+            <div class="td l-align">
+                <a href="/">
+                    <img src="/img/header/logo-eburg.png">
+                </a>
+            </div>
+            <div class="td l-align phones">
+                <div>8 (343) 311-74-00</div>
+                <div>8 (800) 770-74-00</div>
+            </div>
+            <div class="td worktime">
+                <h4>Режим работы</h4>
+                <div>
+                    <div class="week-days">по будням</div>
+                    <time>8:00 — 20:00</time>
+                </div>
+                <div>
+                    <div class="week-days">по выходным</div>
+                    <time>9:00 — 18:00</time>
+                </div>
+                <div>
+                    <div class="week-days">без перерывов</div>
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    <img src="/img/header/logo.png">
+                </div>
+                <span class="slogan float-r">государственные<br>и муниципальные услуги</span>
+            </div>
+        </div>  
     </div>
-    <div class='line2'>
-        <a href='/' class='logo'></a>
-    </div>
+</div>
 </div>

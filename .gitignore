@@ -7,5 +7,6 @@ data/*
 /protected/runtime/*
 .htaccess
 .htpasswd
+*.txt
 
 koala-config.json

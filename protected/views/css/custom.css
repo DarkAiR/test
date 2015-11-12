@@ -11,13 +11,13 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'fira_sansregular', Helvetica, Arial, sans-serif;
+  font-family: 'open_sansregular', sans-serif;
 }
 body,
 table {
-  font-size: 18px;
-  line-height: 24px;
-  color: #0f080f;
+  font-size: 16px;
+  line-height: 22px;
+  color: #3f3f3f;
   background-color: #ffffff;
 }
 *:focus {
@@ -25,56 +25,58 @@ table {
 }
 body > .page {
   min-height: 100%;
-  height: auto !important;
   height: 100%;
-  min-width: 980px;
-  overflow: hidden;
+  width: 100%;
+  display: table;
+}
+body > .page > .wrap {
+  padding-bottom: 44px;
 }
 a,
 a:visited,
 a:link {
   text-decoration: none;
-  color: #0f080f;
+  color: #d8172e;
 }
 a:hover {
   text-decoration: none;
-  color: #ccc5b5;
+  color: #ff515b !important;
 }
 a.active {
   text-decoration: none;
-  color: #ccc5b5 !important;
+  border-bottom: none;
+  color: #3f3f3f !important;
+}
+a.grey,
+a.grey:visited,
+a.grey:link {
+  text-decoration: none;
+  color: #2f2f2f;
+}
+a.grey:hover {
+  text-decoration: none;
+  color: #5f5f5f !important;
 }
 p {
   margin: 0px;
   padding: 0px;
-  padding-bottom: 22px;
 }
-p:nth-last-child(1) {
-  padding-bottom: 0;
-}
-h1,
-h2 {
-  font-family: 'fira_sansregular', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1;
+h1 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: 'open_sanssemibold', sans-serif;
   padding: 0px;
   margin: 0px;
-  padding-bottom: 22px;
-  text-transform: uppercase;
 }
-table {
-  background-color: transparent;
-  border: none;
-}
-table td {
-  vertical-align: top;
-  text-align: left;
+h1 .red {
+  color: #d8172e;
 }
 /* Общий контейнер */
 .common-container {
+  _background-color: rgba(255, 0, 0, 0.2);
   position: relative;
-  width: 980px;
-  padding: 0px 44px 0 44px;
+  width: 100%;
+  padding: 0;
   margin-right: auto;
   margin-left: auto;
 }
@@ -86,34 +88,29 @@ table td {
 .common-container:after {
   clear: both;
 }
-.col2 {
-  width: 356.8px;
-  min-width: 356.8px;
-  float: left;
-  height: inherit;
-  min-height: 1px;
+.common-container .body {
+  width: 100%;
+  margin: 0 auto;
+  min-width: 980px;
 }
-.col3 {
-  width: 535.2px;
-  min-width: 535.2px;
-  float: left;
-  height: inherit;
-  min-height: 1px;
+@media screen and (max-width: 980px) {
+  .common-container .body {
+    min-width: inherit;
+  }
 }
 .separator {
-  background: #ccc5b5;
+  background: #cacaca;
   height: 1px;
-  width: 100%;
   min-height: 1px;
   max-height: 1px;
-}
-.head {
-  position: relative;
-  width: 980px;
-  padding: 0;
-  margin-right: auto;
-  margin-left: auto;
+  width: 100%;
 }
 .footer {
   position: relative;
+  width: 100%;
+  min-width: 1260px;
+  background-color: #4d3b3b;
+  padding: 20px 0;
+  font: 0.87em/1.5em 'PT Sans', arial, sans-serif;
+  color: #f2c19d;
 }

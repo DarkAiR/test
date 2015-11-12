@@ -92,6 +92,16 @@ class TwigFunctions
                 : $vars[2];
     }
 
+    /**
+     * Вывести дамп переменной
+     */
+    public static function dump($v)
+    {
+        echo '<pre>';
+        var_dump($v);
+        echo '</pre>';
+    }
+
     public static function filterUnset($array, $elementName)
     {
         unset($array[$elementName]);
