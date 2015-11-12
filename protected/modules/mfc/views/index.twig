@@ -1,0 +1,83 @@
+{% extends 'views/layouts/main.twig' %}
+{% import 'views/macros/bootstrapForm.twig' as bootstrapForm %}
+
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var ajaxSuccessRegistration = function(data) {
+            ajaxSuccess(data, 'registrationPane');
+        };
+
+        var ajaxErrorRegistration = function(data) {
+            ajaxError(data, 'registrationPane');
+        };
+
+        var ajaxSuccess = function(data, paneId) {
+            console.log('success', data);
+        };
+
+        var ajaxError = function(data, paneId) {
+            // Сбрасываем все ошибки
+            $('#'+paneId+' .form-group').removeClass('has-error');
+            $('#'+paneId+' #js-error').html('').hide();
+
+            var res = data.responseJSON;
+            if (res.error != undefined) {
+                // Пришла общая ошибка
+                $('#'+paneId+' #js-error').show().html(res.error);
+                console.warn(res.errmsg);
+            } else {
+                // Ошибки по полям
+                $('#'+paneId+' #js-error').show().html('');
+                $.each(res, function(k,v) {
+                    $('#'+paneId+' #js-field-'+k).addClass('has-error');
+                    $('#'+paneId+' #js-error').append('<div>'+v+'</div>');
+                });
+            }
+        };
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#loginPane" aria-controls="home" role="tab" data-toggle="tab">Login</a></li>
+            <li role="presentation"><a href="#registrationPane" aria-controls="profile" role="tab" data-toggle="tab">Registration</a></li>
+        </ul>
+
+        <div class="tab-content">
+            
+            <div role="tabpanel" class="tab-pane fade in active" id="loginPane">
+                <div class="alert alert-danger" id='js-error' style='display:none'>
+                </div>
+                <form class="form-horizontal">
+                    {{ bootstrapForm.textField('login2', 'Login', 'Login') }}
+                    {{ bootstrapForm.passwordField('password2', 'Password', 'Password') }}
+                    {{ bootstrapForm.emailField('email2', 'Email', 'Email') }}
+
+                    {{ bootstrapForm.submit('Send', static('CHtml', 'normalizeUrl', [{0:'/mfc/mfc/createPerson/'}]), {
+                        'dataType': 'json',
+                        'success': 'function(data) { console.log(data); }'
+                    } ) }}
+                </form>
+            </div>
+            
+            <div role="tabpanel" class="tab-pane fade" id="registrationPane">
+                <div class="alert alert-danger" id='js-error' style='display:none'>
+                </div>
+                <form class="form-horizontal">
+                    {{ bootstrapForm.textField('login', 'Login', 'Login') }}
+                    {{ bootstrapForm.passwordField('password', 'Password', 'Password') }}
+                    {{ bootstrapForm.emailField('email', 'Email', 'Email') }}
+
+                    {{ bootstrapForm.submit('Registration', static('CHtml', 'normalizeUrl', [{0:'/mfc/mfc/register/'}]), {
+                        'dataType': 'json',
+                        'success': 'ajaxSuccessRegistration',
+                        'error': 'ajaxErrorRegistration'
+                    } ) }}
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
