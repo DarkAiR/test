@@ -19,8 +19,8 @@
 return array (
   '{attribute} doesn\'t contain valid XML.' => '',
   'Корзина:' => '',
+  'Наверх' => '@@Nach oben@@',
   'Введите ваш e-mail' => 'Geben Sie einfach Ihre E-Mail',
   'Да!' => 'Ja!',
-  'Наверх' => 'Nach oben',
   'Подписаться на наши новости:' => 'Abonnieren Sie unseren Newsletter:',
 );

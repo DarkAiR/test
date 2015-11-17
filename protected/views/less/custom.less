@@ -16,7 +16,7 @@
 
 // Шапка, футер
 @headerH:               44px;
-@footerH:               44px;
+@footerH:               100px;
 //@footerPaddingTop:      92px;
 //@footerSeparatorColor:  #a6adb4;
 
@@ -270,11 +270,17 @@ h1 {
 }
 
 .footer {
-    position: relative;
-    width: 100%;
-    min-width: 1260px;
-    background-color: #4d3b3b;
-    padding: 20px 0;
-    font: 0.87em/1.5em 'PT Sans', arial, sans-serif;
-    color: #f2c19d;
+    height:     @footerH;
+    min-height: @footerH;
+    margin-top: -@footerH - 1;
+
+    .inner {    
+        position: relative;
+        width: 100%;
+        min-width: 1260px;
+        background-color: #4d3b3b;
+        padding: 20px 0;
+        font: 0.87em/1.5em 'PT Sans', arial, sans-serif;
+        color: #f2c19d;
+    }
 }

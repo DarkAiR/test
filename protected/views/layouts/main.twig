@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/icons/icon114.png" />   {# Иконка для iPhone #}
     <link rel="apple-touch-icon-precomposed" sizes="72x72"   href="/img/icons/icon72.png"/ >    {# Иконка для iPad #}
     <link rel="apple-touch-icon-precomposed" href="/img/icons/icon57.png" />                    {# Обычная иконка 57x57 #}
-    
+
     <meta http-equiv="cleartype" content="on">                  {# Принудительное сглаживание шрифтов для Mobile IE #}
     <meta name="format-detection" content="telephone=no">       {# Отключаем распознавание телефона #}
     <meta name="format-detection" content="address=no">         {# Отключаем распознавание адреса #}
@@ -41,36 +41,38 @@
     {% block bodyStart %}
     {% endblock %}
 
-    <div class="container">
-        <div class='row'>
-            <div class='col-xs-12'>
-                <div class='head'>
-                    {% block header %}
-                        {{ widget('ext.widgets.HeaderWidget') }}
-                    {% endblock %}
+    <div class='page'>
+        <div class='wrap'>
+            <div class="container">
+                <div class='row'>
+                    <div class='col-xs-12'>
+                        <div class='head'>
+                            {% block header %}
+                                {{ widget('ext.widgets.HeaderWidget') }}
+                            {% endblock %}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-xs-12'>
-                <div class='body'>
-                    {% block content %}
-                    {% endblock %}
+                <div class='row'>
+                    <div class='col-xs-12'>
+                        <div class='body'>
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid">
-          <div class="navbar-inner">
-              <div class="container">
-                <div class='row'>
-                    <div class='col-xs-12'>
-                        <div class='footer'>
-                            {% block footer %}
-                                {{ widget('ext.widgets.FooterWidget') }}
-                            {% endblock %}
-                        </div>
+    <div class='footer'>
+          <div class="container">
+            <div class='row'>
+                <div class='col-xs-12'>
+                    <div class='inner'>
+                        {% block footer %}
+                            {{ widget('ext.widgets.FooterWidget') }}
+                        {% endblock %}
                     </div>
                 </div>
             </div>

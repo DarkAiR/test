@@ -1,0 +1,53 @@
+{% extends 'views/layouts/main.twig' %}
+{% import 'views/macros/bootstrapForm.twig' as bootstrapForm %}
+
+
+{% block css %}
+    {{ parent() }}
+    {{ import('css','services.css', 'application.modules.rldd1.css') }}
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var btnCreateClaim = $('#js-create-claim-btn');
+            var btnClaimStatus = $('#js-claim-status-btn');
+
+            btnCreateClaim.click(function() {
+
+            });
+
+            btnClaimStatus.click(function() {
+
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class='rldd-services-page'>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="well center-block" style="max-width: 400px;">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id='js-create-claim-btn'>
+                    {{ _t('rldd', 'Создать заявку') }}
+                </button>
+                <button type="button" class="btn btn-default btn-lg btn-block" id='js-claim-status-btn'>
+                    {{ _t('rldd', 'Узнать статус заявки') }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default" id='js-panel-createClaim'>
+        <div class="panel-body">
+        </div>
+    </div>
+
+    <div class="panel panel-default" id='js-panel-claimStatus'>
+        <div class="panel-body">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'views/layouts/main.twig' %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>{{ _t('rldd', 'Заявки') }}</h1>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class='col-xs-1'>#</th>
+                <th class='col-xs-2'>Дата</th>
+                <th class='col-xs-2'>Заявители</th>
+                <th class='col-xs-5'>Текст</th>
+                <th class='col-xs-2'>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for claim in claims %}
+                <tr>
+                    <td><small><small>{{ claim.id }}</small></small></td>
+                    <td><small>{{ claim.claimCreate|formatClaimDate }}</small></td>
+                    <td><small>
+                        {% for p in claim.getPersonsData() %}
+                            {{ p.getName() }}{% if not loop.last %}<br>{% endif %}
+                        {% endfor %}
+                    </small></td>
+                    <td><small>{{ claim.service.name }}</small></td>
+                    <td><small>{{ static('StatusCode', 'getStatusText', [claim.currStatus.statusCode]) }}</small></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ widget('CLinkPager', {
+        'pages': pages,
+        'header': ''
+    }) }}
+
+    {# empty line #}
+    <div class="form-group">
+        &nbsp;
+    </div>
+{% endblock %}

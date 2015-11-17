@@ -27,7 +27,7 @@ $res = array(
         'articles',
         'carousel',
 //        'banners',
-        'mfc',
+        'rldd',
     ),
     'components' => array(
         'user' => array(
@@ -60,6 +60,13 @@ $res = array(
             'class' => 'FileSystem',
             'nestedFolders' => 1,
         ),
+        'session' => array(
+            'class' => 'CDbHttpSession',
+            'autoCreateSessionTable' => true,
+            'connectionID' => 'db',
+            'timeout' => 300,       // 5 minutes
+            'gcProbability' => 100
+        ),
         'viewRenderer' => array(
             'class' => 'lib.twig-renderer.ETwigViewRenderer',
             'twigPathAlias' => 'lib.twig.lib.Twig',
@@ -71,21 +78,25 @@ $res = array(
                     0 => 'TwigFunctions::widget',
                     1 => array('is_safe' => array('html')),
                 ),
-                'const'         => 'TwigFunctions::constGet',
-                'static'        => 'TwigFunctions::staticCall',
-                'call'          => 'TwigFunctions::call',
-                'import'        => 'TwigFunctions::importResource',
-                'absLink'       => 'TwigFunctions::absLink',
-                'plural'        => 'TwigFunctions::plural',
-                'dump'          => 'TwigFunctions::dump',
-                't'             => 'Yii::t',
+                'const'             => 'TwigFunctions::constGet',
+                'static'            => 'TwigFunctions::staticCall',
+                'call'              => 'TwigFunctions::call',
+                'import'            => 'TwigFunctions::importResource',
+                'absLink'           => 'TwigFunctions::absLink',
+                'plural'            => 'TwigFunctions::plural',
+                'dump'              => 'TwigFunctions::dump',
+                'isDebug'           => 'TwigFunctions::isDebug',
+                'link'              => 'CHtml::normalizeUrl',
+                '_t'                => 'Yii::t',                                    // см. messages/config.php
             ),
             'filters' => array(
-                'unset'         => 'TwigFunctions::filterUnset',
-                'date'          => 'TwigFunctions::filterDate',
-                'translit'      => 'TwigFunctions::filterTranslit',
-                'externalLink'  => 'TwigFunctions::filterExternalLink',
-                'fixSkype'      => 'TwigFunctions::filterFixSkype',
+                'unset'             => 'TwigFunctions::filterUnset',
+                'translit'          => 'TwigFunctions::filterTranslit',
+                'externalLink'      => 'TwigFunctions::filterExternalLink',
+                'fixSkype'          => 'TwigFunctions::filterFixSkype',
+
+                'date'              => 'TwigFunctions::filterDate',                 // date from timestamp
+                'formatClaimDate'   => 'TwigFunctions::filterFormatClaimDate',      // date from string for Claim
             ),
         ),
         'bootstrap' => array(
@@ -147,11 +158,11 @@ $res['components']['urlManager']['rules'] = array(
     $langPrefix.'/news/'                => 'news/news/blog',
     'news/'                             => 'news/news/blog',
 
-    $langPrefix.'/mfc/'                 => 'mfc/mfc/index',
-    'mfc/'                              => 'mfc/mfc/index',
+    $langPrefix.'/rldd/'                => 'rldd/rldd/index',
+    'rldd/'                             => 'rldd/rldd/index',
 
-    $langPrefix.'/mfc/<action:\w+>/'    => 'mfc/mfc/<action>',
-    'mfc/<action:\w+>/'                 => 'mfc/mfc/<action>',
+    $langPrefix.'/rldd/<action:\w+>/'   => 'rldd/rldd/<action>',
+    'rldd/<action:\w+>/'                => 'rldd/rldd/<action>',
 
     // Admin
     'admin/'                                    => 'system2',

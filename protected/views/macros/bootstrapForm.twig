@@ -39,7 +39,17 @@
 {% endmacro %}
 
 
-{% macro submit(label, url, ajaxOptions={}, useOffset=true) %}
+{% macro submit(label, useOffset=true) %}
+    <div class="form-group">
+        {% set classes = useOffset ? 'col-sm-offset-2 col-sm-10' : 'col-sm-12' %}
+        <div class="{{classes}}">
+            {{ static('CHtml', 'submitButton', [label, {'class':'btn btn-default'} ])|raw }}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro ajaxSubmit(label, url, ajaxOptions={}, useOffset=true) %}
     <div class="form-group">
         {% set classes = useOffset ? 'col-sm-offset-2 col-sm-10' : 'col-sm-12' %}
         <div class="{{classes}}">

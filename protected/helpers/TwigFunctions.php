@@ -12,7 +12,7 @@ class TwigFunctions
         $className = Yii::import($class, true);
         foreach ($properties as $propertyName => $value)
         {
-            if (!property_exists($className, $propertyName))
+            if (!property_exists($className, $propertyName) && !method_exists($className, 'set'.$propertyName))
                 unset($properties[$propertyName]);
         }
 
@@ -102,6 +102,14 @@ class TwigFunctions
         echo '</pre>';
     }
 
+    /**
+     * Дебаг?
+     */
+    public static function isDebug()
+    {
+        return !!YII_DEBUG;
+    }
+
     public static function filterUnset($array, $elementName)
     {
         unset($array[$elementName]);
@@ -115,6 +123,15 @@ class TwigFunctions
             return '';
 
         return date($format, $ts);
+    }
+
+    public static function filterFormatClaimDate($string)
+    {
+        if (!is_string($string))
+            return '';
+
+        $d = new DateTime($string);
+        return $d->format('d.m.Y H:i');
     }
 
     public static function filterTranslit($st)

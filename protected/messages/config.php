@@ -19,4 +19,5 @@ return array(
         '/vendors',
         '/web/js',
     ),
+    'translator' => '(?:Yii::t|t)'
 );

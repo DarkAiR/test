@@ -1,6 +1,6 @@
 <?php
 
-Yii::import('application.modules.mfc.structures.*');
+Yii::import('application.modules.rldd.structures.*');
 
 // Нужно указать один из параметров
 /*class CreatePersonData
@@ -19,6 +19,10 @@ class RlddConnect
 {
     const URL = '91.241.12.198';
     const PORT = 8081;
+
+    // Тексты ошибок, возвращаемых RLDD
+    const ERROR_PERSON_NOT_FOUND = 'not found person by esia params';
+    const ERROR_PERSON_DUPLICATE = 'duplicated, found some persons';
 
     /**
      * Login request
@@ -76,9 +80,9 @@ class RlddConnect
     {
         $url = self::createUrl('/claims', array());
 
-//        $params['senderCode'] = 'mfc_test_code';
+//        $params['senderCode'] = 'rldd_test_code';
 //        $params['statusCode'] = '0';
-//        $params['senderName'] = 'mfc_test';
+//        $params['senderName'] = 'rldd_test';
 //        $params['srguDepartmentId'] = '00000000';
 //        $params['srguServiceId'] = '00000000';
         $params = self::cleanParams((array)$params);

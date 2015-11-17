@@ -1,0 +1,118 @@
+{% extends 'views/layouts/main.twig' %}
+{% import 'views/macros/bootstrapForm.twig' as bootstrapForm %}
+
+
+{% block css %}
+    {{ parent() }}
+    {{ import('css','index.css', 'application.modules.rldd1.css') }}
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        rlddLogin = {
+
+            ajaxSuccessLogin: function(data) {
+                var url = "{{ static('CHtml', 'normalizeUrl', [{0:'/rldd/rldd1/services/'}]) }}";
+                var form = $('<form action="' + url + '" method="post">' +
+                  '<input type="hidden" name="personId" value="' + data.personId + '" />' +
+                  '</form>');
+                $('body').append(form);
+                form.submit();
+            },
+
+            ajaxErrorLogin: function(data) {
+                rlddLogin.ajaxError(data, 'loginPane');
+            },
+
+            ajaxSuccessRegistration: function(data) {
+                var paneId = 'registrationPane';
+                rlddLogin.clearErrors();
+                
+                // Очищаем все поля и скрываем форму
+                $('#'+paneId+' input.form-control').html('');
+                $('#'+paneId+' form').hide();
+
+                // Сообщение пользователю
+                $('#'+paneId+' #js-alert-success').show().html(data.msg);
+            },
+
+            ajaxErrorRegistration: function(data) {
+                rlddLogin.ajaxError(data, 'registrationPane');
+            },
+
+            ajaxError: function(data, paneId) {
+                rlddLogin.clearErrors();
+
+                var res = data.responseJSON;
+                if (res.error != undefined) {
+                    // Пришла общая ошибка
+                    $('#'+paneId+' #js-alert-danger').show().html(res.error);
+                    console.warn(res.errmsg);
+                } else {
+                    // Ошибки по полям
+                    $('#'+paneId+' #js-error').show().html('');
+                    $.each(res, function(k,v) {
+                        $('#'+paneId+' #js-field-'+k).addClass('has-error');
+                        $('#'+paneId+' #js-alert-danger').append('<div>'+v+'</div>');
+                    });
+                }
+            },
+
+            // Сбрасываем все ошибки
+            clearErrors: function(paneId) {
+                $('#'+paneId+' .form-group').removeClass('has-error');
+                $('#'+paneId+' #js-alert-danger').html('').hide();
+                $('#'+paneId+' #js-alert-success').html('').hide();
+            }
+        };
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class='rldd-index-page'>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#loginPane" aria-controls="home" role="tab" data-toggle="tab">Login</a></li>
+            <li role="presentation"><a href="#registrationPane" aria-controls="profile" role="tab" data-toggle="tab">Registration</a></li>
+        </ul>
+
+        <div class="tab-content">
+            
+            <div role="tabpanel" class="tab-pane fade in active" id="loginPane">
+                <div class='container'>
+                    <div class="alert alert-danger" role="alert" id='js-alert-danger' style='display:none'></div>
+                    <div class="alert alert-success" role="alert" id='js-alert-success' style='display:none'></div>
+                    <form class="form-horizontal">
+                        {{ bootstrapForm.textField('login', 'Login <span class="text-danger">*</span>', 'Login') }}
+                        {{ bootstrapForm.passwordField('password', 'Password', 'Password') }}
+                        {{ bootstrapForm.emailField('email', 'Email', 'Email') }}
+
+                        {{ bootstrapForm.ajaxSubmit('Send', static('CHtml', 'normalizeUrl', [{0:'/rldd/rldd1/login/'}]), {
+                            'dataType': 'json',
+                            'success': 'rlddLogin.ajaxSuccessLogin',
+                            'error': 'rlddLogin.ajaxErrorLogin'
+                        } ) }}
+                    </form>
+                </div>
+            </div>
+            
+            <div role="tabpanel" class="tab-pane fade" id="registrationPane">
+                <div class='container'>
+                    <div class="alert alert-danger" role="alert" id='js-alert-danger' style='display:none'></div>
+                    <div class="alert alert-success" role="alert" id='js-alert-success' style='display:none'></div>
+                    <form class="form-horizontal">
+                        {{ bootstrapForm.textField('login', 'Login <span class="text-danger">*</span>', 'Login') }}
+                        {{ bootstrapForm.emailField('email', 'Email', 'Email') }}
+
+                        {{ bootstrapForm.ajaxSubmit('Registration', static('CHtml', 'normalizeUrl', [{0:'/rldd/rldd1/register/'}]), {
+                            'dataType': 'json',
+                            'success': 'rlddLogin.ajaxSuccessRegistration',
+                            'error': 'rlddLogin.ajaxErrorRegistration'
+                        } ) }}
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
