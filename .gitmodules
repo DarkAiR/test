@@ -1,12 +1,6 @@
-[submodule "lib/twig"]
-	path = lib/twig
-	url = git://github.com/fabpot/Twig.git
 [submodule "lib/yii"]
 	path = lib/yii
 	url = git://github.com/yiisoft/yii.git
-[submodule "lib/twig-renderer"]
-	path = lib/twig-renderer
-	url = git://github.com/yiiext/twig-renderer.git
 [submodule "lib/CurlHelper"]
 	path = lib/CurlHelper
 	url = git://github.com/mediasite/CurlHelper.git

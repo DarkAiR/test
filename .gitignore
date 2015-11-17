@@ -8,5 +8,6 @@ data/*
 .htaccess
 .htpasswd
 *.txt
+lib/*
 
 koala-config.json
