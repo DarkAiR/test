@@ -1,7 +1,5 @@
 <?php
 
-Yii::import('application.modules.rldd.structures.*');
-
 class RlddConnect
 {
     const URL = '91.241.12.198';

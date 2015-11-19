@@ -28,6 +28,9 @@ $res = array(
         'carousel',
 //        'banners',
         'rldd',
+        'damask' => array(
+            'ip' => '172.24.204.49',
+        ),
     ),
     'components' => array(
         'user' => array(
@@ -160,9 +163,13 @@ $res['components']['urlManager']['rules'] = array(
 
     $langPrefix.'/rldd/'                => 'rldd/rldd/index',
     'rldd/'                             => 'rldd/rldd/index',
-
     $langPrefix.'/rldd/<action:\w+>/'   => 'rldd/rldd/<action>',
     'rldd/<action:\w+>/'                => 'rldd/rldd/<action>',
+
+    $langPrefix.'/damask/'              => 'damask/damask/index',
+    '/damask/'                          => 'damask/damask/index',
+    $langPrefix.'/damask/<action:\w+>/' => 'damask/damask/<action>',
+    '/damask/<action:\w+>/'             => 'damask/damask/<action>',
 
     // Admin
     'admin/'                                    => 'system2',
