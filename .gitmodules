@@ -13,3 +13,6 @@
 [submodule "lib/twig"]
 	path = lib/twig
 	url = git://github.com/fabpot/Twig.git
+[submodule "protected/modules/damask"]
+	path = protected/modules/damask
+	url = git@bitbucket.org:darkair/yii-module-for-damask.git
