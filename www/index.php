@@ -6,6 +6,8 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
 //defined('YII_ENABLE_ERROR_HANDLER') or define('YII_ENABLE_ERROR_HANDLER',true);
 define('PUBLISH_BOOTSTRAP', false);
 
+date_default_timezone_set('Asia/Yekaterinburg');
+
 $yii = dirname(__FILE__) . '/../lib/yii/framework/' . (YII_DEBUG ? 'yii.php' : 'yiilite.php');
 $config = dirname(__FILE__) . '/../protected/config/main.php';
 
