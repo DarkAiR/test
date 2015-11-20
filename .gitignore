@@ -8,5 +8,13 @@ data/*
 .htaccess
 .htpasswd
 *.txt
+/protected/vendor/*
+/protected/components/select2/*
+/protected/components/require-built.js
+/protected/components/require.css
+/protected/components/require.js
+/protected/components/require.config.js
+composer.lock
+
 
 koala-config.json
