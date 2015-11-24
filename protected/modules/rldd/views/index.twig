@@ -38,7 +38,6 @@
                 rlddLogin.clearErrors();
 
                 var res = data.responseJSON;
-                console.log(res);
                 if (res.error != undefined) {
                     // Пришла общая ошибка
                     $('#'+paneId+' #js-alert-danger').show().html(res.error);
