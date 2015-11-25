@@ -16,6 +16,3 @@
 [submodule "protected/modules/damask"]
 	path = protected/modules/damask
 	url = git@bitbucket.org:darkair/yii-module-for-damask.git
-[submodule "lib/datetimepicker"]
-	path = lib/datetimepicker
-	url = git@github.com:xdan/datetimepicker.git
