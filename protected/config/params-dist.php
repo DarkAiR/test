@@ -10,4 +10,5 @@ return array(
     'dbPassword' => '',
 
     'imageDriver' => '', //Image_GD_Driver,Image_ImageMagick_Driver
+    'useDamask' => true,
 );

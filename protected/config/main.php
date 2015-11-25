@@ -139,8 +139,7 @@ $res = array(
                 'ru' => 'Russian',
                 'en' => 'English',
                 'de' => 'Deutsch'
-            ),
-            'useDamask' => false
+            )
         )
     ),
 );
