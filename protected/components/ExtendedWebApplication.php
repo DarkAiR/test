@@ -29,6 +29,7 @@ class ExtendedWebApplication extends CWebApplication
             $errstr  = $error["message"];
 
             echo '<pre>';
+            print_r($error);
             debug_print_backtrace();
         }
     }

@@ -1,0 +1,1 @@
+O:13:"CSOAPPreorder":3:{s:9:"errorCode";i:0;s:12:"activateCode";s:6:"qweasd";s:7:"regCode";s:4:"1356";}
