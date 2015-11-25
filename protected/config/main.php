@@ -140,6 +140,7 @@ $res = array(
                 'en' => 'English',
                 'de' => 'Deutsch'
             ),
+            'useDamask' => false
         )
     ),
 );
