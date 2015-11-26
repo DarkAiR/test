@@ -50,7 +50,7 @@ class TwigFunctions
     /**
      * Добавить CSS
      */
-    public static function importResource($type, $filename, $alias=false)
+    public static function importResource($type, $filename, $alias=false, $media='')
     {
         switch ($type)
         {
@@ -58,7 +58,7 @@ class TwigFunctions
                 if ($alias === false)
                     $alias = 'application.views.css';
                 $assetsPath = Yii::app()->assetManager->publish(Yii::getPathOfAlias($alias)."/".$filename);
-                Yii::app()->getClientScript()->registerCssFile($assetsPath, '');
+                Yii::app()->getClientScript()->registerCssFile($assetsPath, $media);
                 break;
 
             case 'js':

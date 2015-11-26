@@ -105,6 +105,12 @@ h1 .red {
   max-height: 1px;
   width: 100%;
 }
+.hidden-print-block {
+  visibility: visible;
+}
+.visible-print-block {
+  visibility: hidden;
+}
 .footer {
   height: 100px;
   min-height: 100px;
