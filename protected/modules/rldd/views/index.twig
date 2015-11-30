@@ -14,7 +14,7 @@
 
             ajaxSuccess: function(data) {
                 var url = "{{ link({0:'/rldd/rldd/claims'}) }}";
-                window.location.replace(url);
+                window.location = url;
                 //var form = $('<form action="' + url + '" method="post">' +
                 //  '<input type="hidden" name="personId" value="' + data.personId + '" />' +
                 //  '</form>');
@@ -76,6 +76,8 @@
                     <div class="alert alert-danger" role="alert" id='js-alert-danger' style='display:none'></div>
                     <div class="alert alert-success" role="alert" id='js-alert-success' style='display:none'></div>
                     <form class="form-horizontal">
+                        {{ bootstrapForm.textField('surname', _t('rldd', 'Фамилия'), _t('rldd', 'Фамилия'), 'Рунец') }}
+                        {{ bootstrapForm.textField('firstName', _t('rldd', 'Имя'), _t('rldd', 'Имя'), 'Мария') }}
                         {{ bootstrapForm.ajaxSubmit( _t('rldd', 'Войти'), link({0:'/rldd/rldd/loginFio/'}), {
                             'dataType': 'json',
                             'success': 'rlddLogin.ajaxSuccess',
@@ -91,7 +93,6 @@
                     <div class="alert alert-success" role="alert" id='js-alert-success' style='display:none'></div>
                     <form class="form-horizontal">
                         {{ bootstrapForm.textField('inn', _t('rldd', 'ИНН'), _t('rldd', 'ИНН')) }}
-
                         {{ bootstrapForm.ajaxSubmit( _t('rldd', 'Войти'), link({0:'/rldd/rldd/loginInn/'}), {
                             'dataType': 'json',
                             'success': 'rlddLogin.ajaxSuccess',
@@ -107,7 +108,6 @@
                     <div class="alert alert-success" role="alert" id='js-alert-success' style='display:none'></div>
                     <form class="form-horizontal">
                         {{ bootstrapForm.textField('snils', _t('rldd', 'СНИЛС'), _t('rldd', 'СНИЛС')) }}
-
                         {{ bootstrapForm.ajaxSubmit( _t('rldd', 'Войти'), link({0:'/rldd/rldd/loginSnils/'}), {
                             'dataType': 'json',
                             'success': 'rlddLogin.ajaxSuccess',

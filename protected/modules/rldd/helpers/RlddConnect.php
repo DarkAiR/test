@@ -6,6 +6,23 @@ class RlddConnect
     const PORT = 8081;
 
     /**
+     * Получить персону по имени и фамилии
+     */
+    public static function findBySurnameAndFirstName($surname, $firstName)
+    {
+        $surname = urlencode(mb_strtolower($surname, 'UTF-8'));
+        $firstName = urlencode(mb_strtolower($firstName, 'UTF-8'));
+        $url = self::createUrl('/persons/search/3?surname={surname}&firstName={firstName}', array(
+            'surname' => $surname,
+            'firstName' => $firstName
+        ));
+        $res = self::sendRequest($url);
+        if (!isset($res['_embedded']['persons'][0]))
+            return false;
+        return $res['_embedded']['persons'][0];
+    }
+
+    /**
      * Получить персону по ИНН
      */
     public static function findPersonByInn($inn)

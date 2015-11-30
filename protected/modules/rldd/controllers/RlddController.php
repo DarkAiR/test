@@ -32,11 +32,31 @@ class RlddController extends Controller
         if (!Yii::app()->request->isAjaxRequest)
             throw new CHttpException(404);
 
-        //$surname    = Yii::app()->request->getPost('surname', '');
-        //$firstName  = Yii::app()->request->getPost('firstName', '');
+        $surname    = Yii::app()->request->getPost('surname', '');
+        $firstName  = Yii::app()->request->getPost('firstName', '');
         //$middleName = Yii::app()->request->getPost('middleName', '');
 
-        Yii::app()->session['personId'] = self::TEST_PERSON_ID;
+        // Обязательные параметры
+        $errors = array();
+        if (empty($surname))
+            $errors['surname'] = Yii::t('rlddError', 'Не заданы обязательные параметры');
+        if (empty($firstName))
+            $errors['firstName'] = Yii::t('rlddError', 'Не заданы обязательные параметры');
+        if (!empty($errors)) {
+            header('HTTP/1.1 400 Params error');
+            echo json_encode($errors);
+            Yii::app()->end();
+        }
+        $person = RlddConnect::findBySurnameAndFirstName($surname, $firstName);
+        if (!$person) {
+            header('HTTP/1.1 400 Params error');
+            echo json_encode( array(
+                'error' => Yii::t('rlddError', 'Пользователь не найден'),
+            ));
+            Yii::app()->end();
+        }
+        
+        Yii::app()->session['personId'] = $person['id'];
 
         echo json_encode(array());
         Yii::app()->end();
@@ -75,7 +95,7 @@ class RlddController extends Controller
             Yii::app()->end();            
         }
 
-        Yii::app()->session['personId'] = $person->id;
+        Yii::app()->session['personId'] = $person['id'];
 
         echo json_encode(array());
         Yii::app()->end();
@@ -115,7 +135,7 @@ class RlddController extends Controller
             Yii::app()->end();            
         }
 
-        Yii::app()->session['personId'] = $person->id;
+        Yii::app()->session['personId'] = $person['id'];
 
         echo json_encode(array());
         Yii::app()->end();
